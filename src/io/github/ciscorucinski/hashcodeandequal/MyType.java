@@ -14,11 +14,12 @@ public class MyType {
     private float floatField;
     private double doubleField;
     private int[] arrayField;
+    private Object[] objArrayField;
     private String referenceField;
     private Object nullableReferenceField;
 
     MyType(boolean _bool, byte _byte, char _char, short _short, int _int, long _long, float _float,
-           double _double, int[] _array, String _string, Object _object) {
+           double _double, int[] _array, Object[] _objArray, String _string, Object _object) {
 
         booleanField = _bool;
         byteField = _byte;
@@ -29,6 +30,7 @@ public class MyType {
         floatField = _float;
         doubleField = _double;
         arrayField = _array;
+        objArrayField = _objArray;
         referenceField = _string;
         nullableReferenceField = _object;
     }
@@ -57,9 +59,12 @@ public class MyType {
         long doubleFieldBits = Double.doubleToLongBits(doubleField);     // 64 bits (double) » 64-bit (long) » 32-bit (int)
         result = 31 * result + (int) (doubleFieldBits ^ (doubleFieldBits >>> 32));
 
-        // Objects
+        // Arrays
 
         result = 31 * result + Arrays.hashCode(arrayField);              // var bits » 32-bit
+        result = 31 * result + Arrays.hashCode(objArrayField);           // var bits » 32-bit (nullable & non-nullable)
+
+        // Objects
 
         result = 31 * result + referenceField.hashCode();                // var bits » 32-bit (non-nullable)
         result = 31 * result +                                           // var bits » 32-bit (nullable)
@@ -87,25 +92,26 @@ public class MyType {
         MyType lhs = (MyType) o; // lhs means "left hand side"
 
                 // Primitive fields
-        return     booleanField == lhs.booleanField
-                && byteField    == lhs.byteField
-                && charField    == lhs.charField
-                && shortField   == lhs.shortField
-                && intField     == lhs.intField
-                && longField    == lhs.longField
-                && floatField   == lhs.floatField
-                && doubleField  == lhs.doubleField
+        return     this.booleanField == lhs.booleanField
+                && this.byteField    == lhs.byteField
+                && this.charField    == lhs.charField
+                && this.shortField   == lhs.shortField
+                && this.intField     == lhs.intField
+                && this.longField    == lhs.longField
+                && this.floatField   == lhs.floatField
+                && this.doubleField  == lhs.doubleField
 
                 // Arrays
 
-                && Arrays.equals(arrayField, lhs.arrayField)
+                && Arrays.equals(this.arrayField,    lhs.arrayField)
+                && Arrays.equals(this.objArrayField, lhs.objArrayField)
 
                 // Objects
 
-                && referenceField.equals(lhs.referenceField)
-                && (nullableReferenceField == null
+                && this.referenceField.equals(lhs.referenceField)
+                && (this.nullableReferenceField == null
                             ? lhs.nullableReferenceField == null
-                            : nullableReferenceField.equals(lhs.nullableReferenceField));
+                            : this.nullableReferenceField.equals(lhs.nullableReferenceField));
     }
 
 }
