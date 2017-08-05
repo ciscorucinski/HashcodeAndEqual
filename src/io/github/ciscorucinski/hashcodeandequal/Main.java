@@ -20,13 +20,13 @@ public class Main {
         MyType type10 = new MyType(false, (byte) 0, (char) 0, (short) 0, 0, 0, 0, 0, new int[]{0}, "hello", null);
 
 
-        System.out.println("t 1 = 2 -> " + type1.equals(type2));
-        System.out.println("t 3 = 4 -> " + type3.equals(type4));
-        System.out.println("f 1 = 4 -> " + type1.equals(type4));
-        System.out.println("f 5 = 6 -> " + type5.equals(type2));
-        System.out.println("f 1 = 6 -> " + type1.equals(type6));
-        System.out.println("f 7 = 8 -> " + type7.equals(type8));
-        System.out.println("t 9 = 10 -> " + type9.equals(type10));
+        System.out.println("1 = 2 -> " + type1.equals(type2));
+        System.out.println("3 = 4 -> " + type3.equals(type4));
+        System.out.println("1 = 4 -> " + type1.equals(type4));
+        System.out.println("5 = 6 -> " + type5.equals(type2));
+        System.out.println("1 = 6 -> " + type1.equals(type6));
+        System.out.println("7 = 8 -> " + type7.equals(type8));
+        System.out.println("9 = 10 -> " + type9.equals(type10));
 
 
     }

@@ -87,14 +87,14 @@ public class MyType {
         MyType lhs = (MyType) o; // lhs means "left hand side"
 
         // Primitive fields
-        return booleanField == lhs.booleanField
-                && byteField == lhs.byteField
-                && charField == lhs.charField
-                && shortField == lhs.shortField
-                && intField == lhs.intField
-                && longField == lhs.longField
-                && floatField == lhs.floatField
-                && doubleField == lhs.doubleField
+        return     booleanField == lhs.booleanField
+                && byteField    == lhs.byteField
+                && charField    == lhs.charField
+                && shortField   == lhs.shortField
+                && intField     == lhs.intField
+                && longField    == lhs.longField
+                && floatField   == lhs.floatField
+                && doubleField  == lhs.doubleField
 
                 // Arrays
 
@@ -104,8 +104,8 @@ public class MyType {
 
                 && referenceField.equals(lhs.referenceField)
                 && (nullableReferenceField == null
-                ? lhs.nullableReferenceField == null
-                : nullableReferenceField.equals(lhs.nullableReferenceField));
+                            ? lhs.nullableReferenceField == null
+                            : nullableReferenceField.equals(lhs.nullableReferenceField));
     }
 
 }
