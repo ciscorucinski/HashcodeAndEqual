@@ -86,7 +86,7 @@ public class MyType {
 
         MyType lhs = (MyType) o; // lhs means "left hand side"
 
-        // Primitive fields
+                // Primitive fields
         return     booleanField == lhs.booleanField
                 && byteField    == lhs.byteField
                 && charField    == lhs.charField
